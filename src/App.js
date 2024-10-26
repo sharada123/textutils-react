@@ -1,17 +1,17 @@
 //import logo from './logo.svg';
 import './App.css';
 import Alert from './components/Alert';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React, {useState} from 'react'
 
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Link
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 function App() {
@@ -33,12 +33,12 @@ function App() {
       setMode('dark')
       document.body.style.backgroundColor="#22223B";
       showAlert("The Dark mode has been enabled",'success');
-      document.title="TextUtils-Dark Mode";
+      // document.title="TextUtils-Dark Mode";
    }  else{
       setMode('light')
       document.body.style.backgroundColor="white";
       showAlert("The Light mode has been enabled",'success');
-      document.title="TextUtils-Light Mode";
+      // document.title="TextUtils-Light Mode";
     }
   }
    const customeToggleMode=()=>{
@@ -63,22 +63,21 @@ function App() {
     <>
     {/* <Navbar/>
    <Navbar title="TextUtils" aboutText="About TextUtils"/> */}
-   {/* <Router> */}
+   <Router>
     <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} customeToggleMode={customeToggleMode} />
     <Alert alert={alert}/>
     <div className="container my-3">
-    {/* <Routes> */}
+    <Routes>
       {/* instead of pathexact path for exact matching path */}
-          {/* <Route extact path="/about" element={<About />}> */}
-            
-          {/* </Route> */}
-          {/* <Route extact path="/" element={<TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} />}> */}
-          {/* <TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} /> */}
-          {/* </Route> */}
-        {/* </Routes> */}
-        <TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} />
+          <Route extact path="/about" element={<About mode={mode} />}>
+          </Route>
+           <Route extact path="/" element={<TextForm heading=" Try TextUtils-Word Counter,Character Counter,Remove Extra Spaces" mode={mode} showAlert={showAlert} />}>
+          {/* <TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} /> */} 
+          </Route> 
+         </Routes> 
+        {/* <TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} /> */}
     </div>
-    {/* </Router> */}
+    </Router>
     </>
     
   );

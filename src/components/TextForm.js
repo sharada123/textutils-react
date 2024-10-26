@@ -57,26 +57,27 @@ const removeExtraSpaces=()=>{
   return (
     <>
     <div className="container" style={{color:props.mode==='dark'?'white':'black'}}>
-        <h1 className="mt-5  fw-bold">{props.heading}</h1>
+        <h2 className="mb-3  fw-bold">{props.heading}</h2>
       <div className="mb-3">
-        <textarea className="form-control rounded" value={text} id="mybox" rows="10" onChange={handleOnChange} style={{backgroundColor:props.mode==='dark'?'gray':'white',color:props.mode==='dark'?'white':'black'}}></textarea>
+        <textarea className="form-control rounded" value={text} id="mybox" rows="10" onChange={handleOnChange} style={{backgroundColor:props.mode==='dark'?'#131028':'white',color:props.mode==='dark'?'white':'black'}}></textarea>
       </div>
-      <button className="btn btn-primary" onClick={handleUpClick}>Convert to Upper Case</button>
-      <button className="btn btn-primary mx-3" onClick={handleLowClick}>Convert to Lower Case</button>
-      <button className="btn btn-primary mx-3" onClick={handleClearClick}>Clear</button>
+      {/* use disabled to disabled the button if text is not entered in textarea means lenght of text is 0 then it should be true (disabled) */}
+      <button className="btn btn-primary mx-3 my-1" disabled={text.length===0} onClick={handleUpClick}>Convert to Upper Case</button>
+      <button className="btn btn-primary mx-3 my-1" disabled={text.length===0} onClick={handleLowClick}>Convert to Lower Case</button>
+      <button className="btn btn-primary mx-3 my-1" disabled={text.length===0} onClick={handleClearClick}>Clear</button>
      
-      <button className="btn btn-primary mx-3" onClick={countVowels}>Count Vowels </button>
-      <button className="btn btn-primary mx-3" onClick={handleCopy}>Copy Text </button>
-      <button className="btn btn-primary mx-3" onClick={removeExtraSpaces}>Remove Extra Spaces </button>
+      <button className="btn btn-primary mx-3 my-1" disabled={text.length===0} onClick={countVowels}>Count Vowels </button>
+      <button className="btn btn-primary mx-3 my-1" disabled={text.length===0} onClick={handleCopy}>Copy Text </button>
+      <button className="btn btn-primary mx-3 my-1" disabled={text.length===0} onClick={removeExtraSpaces}>Remove Extra Spaces </button>
     </div>
     <div className="container" style={{color:props.mode==='dark'?'white':'black'}}>
         <h2 className="mt-3 "> Text Summary</h2>
-        <p><span className=" fw-bold">{text.split(" ").length-1}</span> Words and <span className=" fw-bold">{text.length}</span> Characters and <span className=" fw-bold">{vowels}</span>  Vowels</p>
+        <p><span className=" fw-bold">{text.split(" ").filter((element)=>{return element.length!==0}).length}</span> Words and <span className=" fw-bold">{text.length}</span> Characters and <span className=" fw-bold">{vowels}</span>  Vowels</p>
    
         {/* 1 minute to read 125 words so 0.008 minutes to read 1 word 1/125=0.008 minute   */}
-        <p><span className=" fw-bold">{0.008 * text.split(" ").length}</span> Mintues Read</p> 
+        <p><span className=" fw-bold">{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length}</span> Mintues Read</p> 
         <h2>Preview</h2>
-        <p>{text.length>0?text:"Enter something in the above textbox to preview it here."}</p>
+        <p>{text.length>0?text:"Nothing to preview."}</p>
     </div>
     </>
   );
