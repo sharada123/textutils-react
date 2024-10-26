@@ -24,7 +24,7 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link className="nav-link " aria-current="page" to="/">
                 Home
               </Link>
             </li>
@@ -34,36 +34,8 @@ export default function Navbar(props) {
               </Link>
             </li>
           </ul>
-          <input
-            className="form-check-input"
-            type="radio"
-            value="pink"
-            name="bgcolor"
-            id="blue"
-            onChange={props.customeToggleMode}
-          />
-          <label
-            className="form-check-label"
-            htmlFor="blue"
-            style={{ color: props.mode === "dark" ? "white" : "black" }}
-          >
-            Pink Mode
-          </label>
-          <input
-            className="form-check-input"
-            type="radio"
-            value="purple"
-            name="bgcolor"
-            id="purple"
-            onChange={props.customeToggleMode}
-          />
-          <label
-            className="form-check-label"
-            htmlFor="purple"
-            style={{ color: props.mode === "dark" ? "white" : "black" }}
-          >
-            Purple Mode
-          </label>
+         
+          
 
           <div
             className={`form-check form-switch text-${

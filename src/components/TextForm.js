@@ -38,9 +38,7 @@ const countVowels=() =>{
 }
 
 const handleCopy=()=>{
-    let text=document.getElementById('mybox')
-    text.select()
-    navigator.clipboard.writeText(text.value)
+    navigator.clipboard.writeText(text)
     props.showAlert("Copied to clipboard!",'success')
 }
 const removeExtraSpaces=()=>{
@@ -72,7 +70,8 @@ const removeExtraSpaces=()=>{
     </div>
     <div className="container" style={{color:props.mode==='dark'?'white':'black'}}>
         <h2 className="mt-3 "> Text Summary</h2>
-        <p><span className=" fw-bold">{text.split(" ").filter((element)=>{return element.length!==0}).length}</span> Words and <span className=" fw-bold">{text.length}</span> Characters and <span className=" fw-bold">{vowels}</span>  Vowels</p>
+        {/* split text on one or multiple spaces including new line so used(/\s+/) */}
+        <p><span className=" fw-bold">{text.split(/\s+/).filter((element)=>{return element.length!==0}).length}</span> Words and <span className=" fw-bold">{text.length}</span> Characters and <span className=" fw-bold">{vowels}</span>  Vowels</p>
    
         {/* 1 minute to read 125 words so 0.008 minutes to read 1 word 1/125=0.008 minute   */}
         <p><span className=" fw-bold">{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length}</span> Mintues Read</p> 

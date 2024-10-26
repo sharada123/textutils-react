@@ -41,30 +41,13 @@ function App() {
       // document.title="TextUtils-Light Mode";
     }
   }
-   const customeToggleMode=()=>{
-     let radiobtn=document.querySelector('input[name="bgcolor"]:checked')
-     if (radiobtn){
-        if(radiobtn.value === 'pink'){
-          setMode('dark')
-          document.body.style.backgroundColor="pink"
-          // setBtnColor('warning')
-          showAlert("The Blue mode has been enabled",'success');
-        }else{
-          setMode('dark')
-          document.body.style.backgroundColor="purple"
-          // setBtnColor('info')
-          showAlert("The Purple mode has been enabled",'success');
-          
-        }
-     }
-    
-   }
+   
   return (
     <>
     {/* <Navbar/>
    <Navbar title="TextUtils" aboutText="About TextUtils"/> */}
    <Router>
-    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} customeToggleMode={customeToggleMode} />
+    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
     <Alert alert={alert}/>
     <div className="container my-3">
     <Routes>
